@@ -1,15 +1,15 @@
 <ion-header>
   <ion-navbar>
-  	<ion-title>
-    	Map
-  	</ion-title>
-  	<ion-buttons end>
-    	<button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-  	</ion-buttons>
-	</ion-navbar>
+    <ion-title>
+      Map
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="currentLocation()"><ion-icon name="navigate"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding scroll="false">
-	<ion-searchbar></ion-searchbar>
-	<div #map id="map"></div>
+  <ion-searchbar></ion-searchbar>
+  <div #map id="map"></div>
 </ion-content>

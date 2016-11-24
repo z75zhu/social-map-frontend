@@ -19,8 +19,8 @@ export class MapPage {
     this.mapService.loadMap(this.mapElement);
   }
 
-	addMarker(){
-		this.mapService.addMarker();
+	currentLocation(){
+		this.mapService.currentLocation();
 	}
 
 }
