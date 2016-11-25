@@ -34947,6 +34947,11 @@ var MapPage = (function () {
     function MapPage(navCtrl, mapService) {
         this.navCtrl = navCtrl;
         this.mapService = mapService;
+        // let socket = io.connect('http://localhost');
+        // socket.on('news', function (data) {
+        //   console.log(data);
+        //   socket.emit('my other event', { my: 'data' });
+        // });
     }
     MapPage.prototype.ionViewDidLoad = function () {
         this.mapService.loadMap(this.mapElement);
@@ -34956,15 +34961,16 @@ var MapPage = (function () {
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ViewChild */])('map'), 
-        __metadata('design:type', __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */])
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */]) === 'function' && _a) || Object)
     ], MapPage.prototype, "mapElement", void 0);
     MapPage = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
             selector: 'page-map',template:/*ion-inline-start:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Map\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="currentLocation()"><ion-icon name="navigate"></ion-icon></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding scroll="false">\n  <ion-searchbar></ion-searchbar>\n  <div #map id="map"></div>\n</ion-content>\n'/*ion-inline-end:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/map/map.html"*/
         }), 
-        __metadata('design:paramtypes', [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */]])
+        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */]) === 'function' && _c) || Object])
     ], MapPage);
     return MapPage;
+    var _a, _b, _c;
 }());
 //# sourceMappingURL=map.js.map
 
