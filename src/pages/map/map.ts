@@ -25,7 +25,6 @@ export class MapPage {
   }
 
 	currentLocation(){
-
 		this.mapService.currentLocation();
 	}
 

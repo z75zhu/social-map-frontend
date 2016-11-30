@@ -16,6 +16,8 @@ export class MapService {
 	mapInitialized: boolean = false;
 	connectivityListenersAdded: boolean = false;
 
+	user_location: any;
+
 	constructor(public http: Http, public connectivityService: ConnectivityService) {
 	}
 
@@ -29,45 +31,31 @@ export class MapService {
 			this.addConnectivityListeners();
 		}
 
-		if(typeof google == "undefined" || typeof google.maps == "undefined") {
+		console.log("Google maps JavaScript needs to be loaded.");
 
-			console.log("Google maps JavaScript needs to be loaded.");
-			this.disableMap();
+		if(this.connectivityService.isOnline()) {
+			console.log("online, loading map");
 
-			if(this.connectivityService.isOnline()) {
-				console.log("online, loading map");
-
-				//Load the SDK
-				window['mapInit'] = () => {
-					this.initMap();
-					this.enableMap();
-				}
-
-				let script = document.createElement("script");
-				script.id = "googleMaps";
-
-				if(this.apiKey) {
-					script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-				} else {
-					script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';       
-				}
-
-				document.body.appendChild(script);  
-
-			} 
-		}
-		else {
-
-			if(this.connectivityService.isOnline()) {
-				console.log("showing map");
+			//Load the SDK
+			window['mapInit'] = () => {
 				this.initMap();
 				this.enableMap();
 			}
-			else {
-				console.log("disabling map");
-				this.disableMap();
+
+			let script = document.createElement("script");
+			script.id = "googleMaps";
+
+			if(this.apiKey) {
+				script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+			} else {
+				script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';       
 			}
 
+			document.body.appendChild(script);  
+
+		} else {
+			console.log("offline, loading map unsuccessful")
+			//TODO, maybe show some image holder or warning for being offline
 		}
 
 	}
@@ -109,15 +97,17 @@ export class MapService {
 
 		Geolocation.getCurrentPosition().then((position) => {
 
-			let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			this.user_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 			let mapOptions = {
-				center: latLng,
+				center: this.user_location,
 				zoom: 15,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 
 			this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+			this.addMarker(this.user_location, '<h4>this is yifan and zack</h4>');
+			console.log('user_location: ' + typeof(this.user_location) + ', ' + this.user_location);
 
 		});
 
@@ -129,32 +119,31 @@ export class MapService {
 
 	enableMap() {
 		console.log("enable map");
+
+		//TODO, set up socket.io (done at home computer) which should handle disconnect/reconnect.
+		//Upload user_location, pull all surrounding locations -> new array of markers
+		//On location change, if exceeds a limit range, notify server.
+		//Set on-incoming-locations, move corresponding marker
+
 	}
 
 	currentLocation() {
 
-		Geolocation.getCurrentPosition().then((position) => {
-
-			let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			this.map.setCenter(latLng);
-
-		});
+		this.map.setCenter(this.user_location);
 
 	}
 
-/*	addMarker(){
+	addMarker(position, content){
 
 		let marker = new google.maps.Marker({
 			map: this.map,
 			animation: google.maps.Animation.DROP,
-			position: this.map.getCenter()
-		});
-
-		let content = "<h4>Information!</h4>";          
+			position: position
+		});        
 
 		this.addInfoWindow(marker, content);
 
-	}*/
+	}
 
 	addInfoWindow(marker, content){
 

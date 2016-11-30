@@ -34872,11 +34872,12 @@ var ChatPage = (function () {
     };
     ChatPage = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/chat/chat.html"*/'<!--\n  Generated template for the Chat page.\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>chat</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/chat/chat.html"*/
+            selector: 'page-chat',template:/*ion-inline-start:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\chat\chat.html"*/'<!--\n\n  Generated template for the Chat page.\n\n\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Chat</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\chat\chat.html"*/
         }), 
-        __metadata('design:paramtypes', [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]) === 'function' && _a) || Object])
     ], ChatPage);
     return ChatPage;
+    var _a;
 }());
 //# sourceMappingURL=chat.js.map
 
@@ -34914,11 +34915,12 @@ var ContactPage = (function () {
     };
     ContactPage = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/contact/contact.html"*/'<!--\n  Generated template for the Contact page.\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>contact</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\contact\contact.html"*/'<!--\n\n  Generated template for the Contact page.\n\n\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contact</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\contact\contact.html"*/
         }), 
-        __metadata('design:paramtypes', [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]) === 'function' && _a) || Object])
     ], ContactPage);
     return ContactPage;
+    var _a;
 }());
 //# sourceMappingURL=contact.js.map
 
@@ -34961,16 +34963,15 @@ var MapPage = (function () {
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ViewChild */])('map'), 
-        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */]) === 'function' && _a) || Object)
+        __metadata('design:type', __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */])
     ], MapPage.prototype, "mapElement", void 0);
     MapPage = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Map\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="currentLocation()"><ion-icon name="navigate"></ion-icon></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding scroll="false">\n  <ion-searchbar></ion-searchbar>\n  <div #map id="map"></div>\n</ion-content>\n'/*ion-inline-end:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/map/map.html"*/
+            selector: 'page-map',template:/*ion-inline-start:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\map\map.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Map\n\n    </ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="currentLocation()"><ion-icon name="navigate"></ion-icon></button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding scroll="false">\n\n  <ion-searchbar></ion-searchbar>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\map\map.html"*/
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */]) === 'function' && _c) || Object])
+        __metadata('design:paramtypes', [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_map_service__["a" /* MapService */]])
     ], MapPage);
     return MapPage;
-    var _a, _b, _c;
 }());
 //# sourceMappingURL=map.js.map
 
@@ -35006,7 +35007,7 @@ var TabsPage = (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_3__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({template:/*ion-inline-start:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Map" tabIcon="map"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Chat" tabIcon="chatbubbles"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/apple/Desktop/social-map/social-map-frontend/src/pages/tabs/tabs.html"*/
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({template:/*ion-inline-start:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Map" tabIcon="map"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Chat" tabIcon="chatbubbles"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\rsvpuser\Desktop\social-map-frontend\src\pages\tabs\tabs.html"*/
         }), 
         __metadata('design:paramtypes', [])
     ], TabsPage);
@@ -35106,37 +35107,26 @@ var MapService = (function () {
         if (!this.connectivityListenersAdded) {
             this.addConnectivityListeners();
         }
-        if (typeof google == "undefined" || typeof google.maps == "undefined") {
-            console.log("Google maps JavaScript needs to be loaded.");
-            this.disableMap();
-            if (this.connectivityService.isOnline()) {
-                console.log("online, loading map");
-                //Load the SDK
-                window['mapInit'] = function () {
-                    _this.initMap();
-                    _this.enableMap();
-                };
-                var script = document.createElement("script");
-                script.id = "googleMaps";
-                if (this.apiKey) {
-                    script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-                }
-                else {
-                    script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
-                }
-                document.body.appendChild(script);
-            }
-        }
-        else {
-            if (this.connectivityService.isOnline()) {
-                console.log("showing map");
-                this.initMap();
-                this.enableMap();
+        console.log("Google maps JavaScript needs to be loaded.");
+        if (this.connectivityService.isOnline()) {
+            console.log("online, loading map");
+            //Load the SDK
+            window['mapInit'] = function () {
+                _this.initMap();
+                _this.enableMap();
+            };
+            var script = document.createElement("script");
+            script.id = "googleMaps";
+            if (this.apiKey) {
+                script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
             }
             else {
-                console.log("disabling map");
-                this.disableMap();
+                script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
             }
+            document.body.appendChild(script);
+        }
+        else {
+            console.log("offline, loading map unsuccessful");
         }
     };
     MapService.prototype.addConnectivityListeners = function () {
@@ -35165,13 +35155,15 @@ var MapService = (function () {
         var _this = this;
         this.mapInitialized = true;
         __WEBPACK_IMPORTED_MODULE_3_ionic_native__["b" /* Geolocation */].getCurrentPosition().then(function (position) {
-            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            _this.user_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var mapOptions = {
-                center: latLng,
+                center: _this.user_location,
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.addMarker(_this.user_location, '<h4>this is yifan and zack</h4>');
+            console.log('user_location: ' + typeof (_this.user_location) + ', ' + _this.user_location);
         });
     };
     MapService.prototype.disableMap = function () {
@@ -35179,27 +35171,22 @@ var MapService = (function () {
     };
     MapService.prototype.enableMap = function () {
         console.log("enable map");
+        //TODO, set up socket.io (done at home computer) which should handle disconnect/reconnect.
+        //Upload user_location, pull all surrounding locations -> new array of markers
+        //On location change, if exceeds a limit range, notify server.
+        //Set on-incoming-locations, move corresponding marker
     };
     MapService.prototype.currentLocation = function () {
-        var _this = this;
-        __WEBPACK_IMPORTED_MODULE_3_ionic_native__["b" /* Geolocation */].getCurrentPosition().then(function (position) {
-            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            _this.map.setCenter(latLng);
-        });
+        this.map.setCenter(this.user_location);
     };
-    /*	addMarker(){
-    
-            let marker = new google.maps.Marker({
-                map: this.map,
-                animation: google.maps.Animation.DROP,
-                position: this.map.getCenter()
-            });
-    
-            let content = "<h4>Information!</h4>";
-    
-            this.addInfoWindow(marker, content);
-    
-        }*/
+    MapService.prototype.addMarker = function (position, content) {
+        var marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: position
+        });
+        this.addInfoWindow(marker, content);
+    };
     MapService.prototype.addInfoWindow = function (marker, content) {
         var _this = this;
         var infoWindow = new google.maps.InfoWindow({
@@ -35211,9 +35198,10 @@ var MapService = (function () {
     };
     MapService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(), 
-        __metadata('design:paramtypes', [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__connectivity_service__["a" /* ConnectivityService */]])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__connectivity_service__["a" /* ConnectivityService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__connectivity_service__["a" /* ConnectivityService */]) === 'function' && _b) || Object])
     ], MapService);
     return MapService;
+    var _a, _b;
 }());
 //# sourceMappingURL=map-service.js.map
 
