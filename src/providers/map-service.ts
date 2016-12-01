@@ -21,7 +21,7 @@ export class MapService {
 
 	user_location: any;
 
-	constructor(public http: Http, public connectivityService: ConnectivityService) {
+	constructor(public http: Http, public connectivityService: ConnectivityService, public socketService: SocketService) {
 	}
 
 	loadMap(mapElement: ElementRef) {
@@ -127,6 +127,12 @@ export class MapService {
 		//Upload user_location, pull all surrounding locations -> new array of markers
 		//On location change, if exceeds a limit range, notify server.
 		//Set on-incoming-locations, move corresponding marker
+
+		this.socketService.connect(this.server);
+		this.socketService.on('news', (data) => {
+			console.log(data);
+			this.socketService.emit('my other event', { my: 'data' });
+		});		
 
 	}
 
