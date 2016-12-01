@@ -4,11 +4,14 @@ import 'rxjs/add/operator/map';
 
 import { Geolocation } from 'ionic-native';
 import { ConnectivityService } from './connectivity-service';
+import { SocketService } from './socket-service'
 
 declare var google;
 
 @Injectable()
 export class MapService {
+
+	server: String = 'http://localhost:3000';
 
 	mapElement: ElementRef;
 	map: any;
@@ -16,7 +19,7 @@ export class MapService {
 	mapInitialized: boolean = false;
 	connectivityListenersAdded: boolean = false;
 
-	constructor(public http: Http, public connectivityService: ConnectivityService) {
+	constructor(public http: Http, public connectivityService: ConnectivityService, public socketService: SocketService) {
 	}
 
 	loadMap(mapElement: ElementRef) {
@@ -129,6 +132,11 @@ export class MapService {
 
 	enableMap() {
 		console.log("enable map");
+		this.socketService.connect(this.server);
+		this.socketService.on('news', (data) => {
+			console.log(data);
+			this.socketService.emit('my other event', { my: 'data' });
+		});
 	}
 
 	currentLocation() {

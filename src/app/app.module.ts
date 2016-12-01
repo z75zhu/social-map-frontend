@@ -9,6 +9,7 @@ import { ContactPage } from '../pages/contact/contact';
 
 import { MapService } from '../providers/map-service';
 import { ConnectivityService } from '../providers/connectivity-service';
+import { SocketService } from '../providers/socket-service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,6 @@ import { ConnectivityService } from '../providers/connectivity-service';
     ChatPage,
     ContactPage
   ],
-  providers: [MapService, ConnectivityService]
+  providers: [MapService, ConnectivityService, SocketService]
 })
 export class AppModule {}
