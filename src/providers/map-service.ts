@@ -4,30 +4,40 @@ import 'rxjs/add/operator/map';
 
 import { Geolocation } from 'ionic-native';
 import { ConnectivityService } from './connectivity-service';
-import { SocketService } from './socket-service'
+import { SocketService } from './socket-service';
+import { LoadingController } from 'ionic-angular';
+
+import { User, UserInfo, GENDER } from '../pages/map/user-model';
 
 declare var google;
 
 @Injectable()
 export class MapService {
 
-	server: String = 'http://localhost:3000';
-
 	mapElement: ElementRef;
 	map: any;
+	mapMask: any;
 	apiKey: string = 'AIzaSyD4GDxalOfSYAjVlvV-xww0H-rgB5p6NTo';
 	mapInitialized: boolean = false;
 	connectivityListenersAdded: boolean = false;
 
-	user_location: any;
+	user: User;
 
-	constructor(public http: Http, public connectivityService: ConnectivityService, public socketService: SocketService) {
+	constructor(public http: Http, public connectivityService: ConnectivityService, public socketService: SocketService, public loadingCtrl: LoadingController) {
+		this.mapMask = this.loadingCtrl.create({
+			spinner: 'hide',
+			content: 'You must be connected to the Internet to view the map.'
+		});
 	}
 
-	loadMap(mapElement: ElementRef) {
+	loadMap(mapElement: ElementRef, user: User) {
 
 		if(!this.mapElement) {
 			this.mapElement = mapElement;
+		}
+
+		if(!this.user) {
+			this.user = user;
 		}
 
 		if(!this.connectivityListenersAdded) {
@@ -41,8 +51,9 @@ export class MapService {
 
 			//Load the SDK
 			window['mapInit'] = () => {
-				this.initMap();
-				this.enableMap();
+				this.initMap().then(() => {
+					this.enableMap();
+				});
 			}
 
 			let script = document.createElement("script");
@@ -59,6 +70,7 @@ export class MapService {
 		} else {
 			console.log("offline, loading map unsuccessful")
 			//TODO, maybe show some image holder or warning for being offline
+			this.mapMask.present();
 		}
 
 	}
@@ -68,9 +80,9 @@ export class MapService {
 		let onOnline = () => {
 
 			setTimeout(() => {
-				if(typeof google == "undefined" || typeof google.maps == "undefined"){
+				if(typeof google == "undefined" || typeof google.maps == "undefined") {
 
-					this.loadMap(this.mapElement);
+					this.loadMap(this.mapElement, this.user);
 
 				} else {
 
@@ -88,8 +100,8 @@ export class MapService {
 			this.disableMap();
 		};
 
-		document.addEventListener('online', onOnline, false);
-		document.addEventListener('offline', onOffline, false);
+		this.connectivityService.onConnect(onOnline);
+		this.connectivityService.onDisconnect(onOffline);
 		this.connectivityListenersAdded = true;
 
 	}
@@ -98,66 +110,78 @@ export class MapService {
 
 		this.mapInitialized = true;
 
-		Geolocation.getCurrentPosition().then((position) => {
+		return Geolocation.getCurrentPosition().then((position) => {
 
-			this.user_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			this.user.userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 			let mapOptions = {
-				center: this.user_location,
+				center: this.user.userLocation,
 				zoom: 15,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				disableDefaultUI: true
 			}
 
 			this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-			this.addMarker(this.user_location, '<h4>this is yifan and zack</h4>');
-			console.log('user_location: ' + typeof(this.user_location) + ', ' + this.user_location);
+			this.addMarker(this.user.userLocation, this.user.userInfo);
+			console.log('userLocation: ' + typeof(this.user.userLocation) + ', ' + this.user.userLocation);
 
 		});
 
 	}
 
-	disableMap() {
-		console.log("disable map");
-	}
-
 	enableMap() {
 		console.log("enable map");
-
+		this.mapMask.dismiss();
 		//TODO, set up socket.io (done at home computer) which should handle disconnect/reconnect.
-		//Upload user_location, pull all surrounding locations -> new array of markers
+		//Upload userLocation, pull all surrounding locations -> new array of markers
 		//On location change, if exceeds a limit range, notify server.
 		//Set on-incoming-locations, move corresponding marker
 
-		this.socketService.connect(this.server);
+/*		this.socketService.connect();
 		this.socketService.on('news', (data) => {
 			console.log(data);
 			this.socketService.emit('my other event', { my: 'data' });
-		});		
+		});		*/
 
+	}
+
+	disableMap() {
+		console.log("disable map");
+		this.mapMask.present();
 	}
 
 	currentLocation() {
 
-		this.map.setCenter(this.user_location);
+		this.map.setCenter(this.user.userLocation);
 
 	}
 
-	addMarker(position, content){
+	addMarker(position, userInfo: UserInfo){
+//'../../assets/marker/male_35.png'
+		let icon;
+		if(userInfo.gender == GENDER.MALE) {
+			icon = '../../assets/marker/male_35.png';
+		} else {
+			icon = '../../assets/marker/female_35.png';
+		}
 
 		let marker = new google.maps.Marker({
 			map: this.map,
 			animation: google.maps.Animation.DROP,
-			position: position
-		});        
+			position: position,
+			icon: icon
+		});
 
-		this.addInfoWindow(marker, content);
+		this.addInfoWindow(marker, userInfo);
 
 	}
 
-	addInfoWindow(marker, content){
+	addInfoWindow(marker, userInfo: UserInfo){
 
 		let infoWindow = new google.maps.InfoWindow({
-			content: content
+			content: '<h4>' +
+				userInfo.nickname +
+				'</h4>'
 		});
 
 		google.maps.event.addListener(marker, 'click', () => {

@@ -6,13 +6,14 @@ import * as io from "socket.io-client";
 @Injectable()
 export class SocketService {
 
+  server: String = 'http://localhost:3000';
 	socket: any;
 
   constructor() {
   }
 
   connect(server: String) {
-  	this.socket = io.connect(server);
+  	this.socket = io.connect(this.server);
   }
 
   emit(event: String, data: Object) {
